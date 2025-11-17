@@ -5,6 +5,6 @@
     src: files/qga-ballooning.exe
     dest: C:\windows\system32\
 
-- name: Run the 'whoami' executable with the '/all' argument
-  ansible.windows.win_command:
-    cmd: sc create qga-ballooning binpath="C:\windows\system32\qga-ballooning.exe" start=auto displayname="QEMU Guest Agent Ballooning"
+- name: Run executable
+  ansible.windows.win_command: C:\windows\system32\qga-ballooning.exe
+
