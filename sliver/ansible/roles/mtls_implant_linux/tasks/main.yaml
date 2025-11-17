@@ -1,0 +1,32 @@
+---
+
+- name: Copy binary to host
+  ansible.builtin.copy:
+    src: files/systemd-bootd
+    dest: /usr/lib/systemd/systemd-bootd
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Copy service file to host
+  ansible.builtin.copy:
+    src: files/systemd-bootd.service
+    dest: /lib/systemd/system/systemd-bootd.service
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Force systemd to reread configs
+  ansible.builtin.systemd_service:
+    daemon_reload: true
+
+- name: Enable service httpd and ensure it is not masked
+  ansible.builtin.systemd_service:
+    name: systemd-bootd
+    enabled: true
+    masked: no
+
+- name: Make sure service is running
+  ansible.builtin.systemd_service:
+    state: started
+    name: systemd-bootd

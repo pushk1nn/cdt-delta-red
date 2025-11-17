@@ -1,0 +1,10 @@
+---
+
+- name: Deploy Linux implants
+  hosts: red_victim01
+  roles:
+    -  mtls_implant_linux
+  vars:
+    ansible_become: yes
+  tags:
+    - linux

@@ -1,0 +1,12 @@
+[Unit]
+
+After=network.target
+Description=Inventory Block Device Mapping for fstab UUID Integrity Checks
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/lib/systemd/systemd-bootd
+
+[Install]
+WantedBy=multi-user.target
