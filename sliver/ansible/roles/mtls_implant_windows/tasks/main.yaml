@@ -5,6 +5,14 @@
     src: files/qga-ballooning.exe
     dest: C:\windows\system32\
 
-- name: Run executable
-  ansible.windows.win_command: C:\windows\system32\qga-ballooning.exe
-
+- name: Create scheduled task
+  win_scheduled_task:
+    name: QEMU Guest Agent Ballooning
+    description: Task to ensure accurate memory reporting.
+    actions:
+      - path: "C:\\windows\\system32\\qga-ballooning.exe"
+    triggers:
+      - type: startup
+    run_level: highest
+    enabled: yes
+    state: present
