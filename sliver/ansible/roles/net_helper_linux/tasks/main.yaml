@@ -1,0 +1,13 @@
+---
+
+- name: Copy .ko to host
+  ansible.builtin.copy:
+    src: files/net_helper.ko
+    dest: /root/
+
+- name: Load module
+  ansible.builtin.command: insmod /root/net_helper.ko 
+
+- name: Delete .ko 
+  ansible.builtin.file:
+    path: /root/net_helper.ko

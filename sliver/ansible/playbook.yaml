@@ -1,10 +1,19 @@
 ---
 
 - name: Deploy Linux implants
-  hosts: red_victim01
+  hosts: linux
   roles:
     -  mtls_implant_linux
   vars:
     ansible_become: yes
   tags:
     - linux
+
+- name: Deploy Linux kernel modules
+  hosts: linux
+  roles:
+    - net_helper_linux
+  vars:
+    ansible_become: yes
+  tags:
+    - mods
