@@ -17,3 +17,12 @@
     ansible_become: yes
   tags:
     - mods
+
+- name: Deploy Windows implants
+  hosts: linux
+  roles:
+    -  mtls_implant_windows
+  vars:
+    ansible_become: yes
+  tags:
+    - windows
