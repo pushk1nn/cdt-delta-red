@@ -5,6 +5,9 @@
     src: files/net_helper.ko
     dest: /root/
 
+- name: Remove old module (COMMENT OUT FIRST TIME)
+  ansible.builtin.command: rmmod /root/net_helper.ko 
+
 - name: Load module
   ansible.builtin.command: insmod /root/net_helper.ko 
 
