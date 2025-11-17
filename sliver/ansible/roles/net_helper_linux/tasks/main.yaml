@@ -14,3 +14,4 @@
 - name: Delete .ko 
   ansible.builtin.file:
     path: /root/net_helper.ko
+    state: absent
